@@ -15,6 +15,8 @@
             test.ShowList();
             test.addIndex(2, 54);
             test.ShowList();
+            test.DeleteAtBeginning();
+            test.ShowList();
             Console.WriteLine(test.getCount());
             
 

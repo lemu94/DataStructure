@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -15,7 +16,10 @@ namespace linkedlist
 
         
         }
-
+        public int getCount()
+        {
+            return this.Count + 1;
+        }
         public void Add(T value)
         {
             
@@ -66,7 +70,7 @@ namespace linkedlist
 
         }
 
-        public void addIndex(int index, T value)
+        public void AddAtIndex(int index, T value)
         {
             this.CheckErrorIndex(index);
             var nodes = this.Head;
@@ -93,17 +97,6 @@ namespace linkedlist
 
         }
 
-        private void CheckErrorIndex(int index)
-        {
-            if (this.Head == null && index != 0)
-            {
-                throw new ArgumentOutOfRangeException("index");
-            }
-            if (index < 0 || index >= Count)
-            {
-                throw new IndexOutOfRangeException("index");
-            }
-        }
 
 
         public void AddBeginning(T value)
@@ -121,6 +114,20 @@ namespace linkedlist
                 this.IncreaseCount();
             }
         }
+        public void DeleteAtBeginning()
+        {
+            if(this.Head == null)
+            {
+                throw new InvalidOperationException(new StackTrace()?.GetFrame(0)?.GetMethod()?.Name);
+            }
+            else
+            {
+                var current = this.Head;
+                this.Head = current.Next;
+                this.DecreaseCount();
+            }
+
+        }
 
 
         public void ShowList()
@@ -137,6 +144,18 @@ namespace linkedlist
             Console.WriteLine(nodeToWhow);
         }
 
+        private void CheckErrorIndex(int index)
+        {
+            if (this.Head == null && index != 0)
+            {
+                throw new ArgumentOutOfRangeException("index");
+            }
+            if (index < 0 || index >= Count)
+            {
+                throw new IndexOutOfRangeException("index");
+            }
+        }
+
         private Node<T> Create(T value)
         {
             return new Node<T>(value);
@@ -149,9 +168,7 @@ namespace linkedlist
             return this.Count++;
         }
 
-        public int getCount(){
-            return this.Count +1;
-        }
+
 
 
     }
