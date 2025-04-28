@@ -13,10 +13,11 @@
             test.ShowList();
             test.DeleteAtIndex(2);
             test.ShowList();
-            test.addIndex(2, 54);
+            test.AddAtIndex(2, 54);
             test.ShowList();
             test.DeleteAtBeginning();
             test.ShowList();
+            Console.WriteLine(test.SearchByPosition(0));
             Console.WriteLine(test.getCount());
             
 

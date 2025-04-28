@@ -8,14 +8,24 @@ using System.Threading.Tasks;
 
 namespace linkedlist
 {
-    public class LinkeList<T>
+    public interface ILinkedList<T>
+    {
+        int getCount();
+        void Add(T value);
+        void DeleteAtIndex(int index);
+        void AddAtIndex(int index, T value);
+        void AddBeginning(T value);
+        void DeleteAtBeginning();
+        T SearchByPosition(int index);
+        void ShowList();
+    }
+
+    public class LinkeList<T> : ILinkedList<T>
     {
         private Node<T>? Head = null;
         private int Count { get; set; } = 0;
-        public LinkeList() { 
+        public LinkeList() { }
 
-        
-        }
         public int getCount()
         {
             return this.Count + 1;
@@ -42,7 +52,32 @@ namespace linkedlist
 
         }
 
-        
+        public T SearchByPosition(int index)
+        {
+            this.CheckErrorIndex(index);
+            var current = this.Head;
+            if (index == 0)
+            {
+                return current.Value;
+            }
+            else
+            {
+                var current_index = 0;
+                
+                while (current.Next != null)
+                {
+                    if (index == current_index)
+                    {
+                        break;
+                    }
+                    current = current.Next;
+                    current_index++;
+
+                }
+            }
+            return  current.Value;
+        }
+
         public void DeleteAtIndex(int index)
         {
             this.CheckErrorIndex(index);
@@ -69,7 +104,6 @@ namespace linkedlist
             }
 
         }
-
         public void AddAtIndex(int index, T value)
         {
             this.CheckErrorIndex(index);
@@ -96,8 +130,6 @@ namespace linkedlist
 
 
         }
-
-
 
         public void AddBeginning(T value)
         {
@@ -129,7 +161,6 @@ namespace linkedlist
 
         }
 
-
         public void ShowList()
         {
             var nodeToWhow = "";
@@ -150,7 +181,7 @@ namespace linkedlist
             {
                 throw new ArgumentOutOfRangeException("index");
             }
-            if (index < 0 || index >= Count)
+            if (index < 0 || index > Count)
             {
                 throw new IndexOutOfRangeException("index");
             }
