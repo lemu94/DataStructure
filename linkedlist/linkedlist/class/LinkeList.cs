@@ -150,7 +150,7 @@ namespace linkedlist
         }
 
         public int getCount(){
-            return this.Count;
+            return this.Count +1;
         }
 
 
