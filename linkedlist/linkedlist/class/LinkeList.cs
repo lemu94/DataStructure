@@ -28,7 +28,7 @@ namespace linkedlist
 
         public int getCount()
         {
-            return this.Count + 1;
+            return this.Count ;
         }
         public void Add(T value)
         {
@@ -47,8 +47,10 @@ namespace linkedlist
                 }
 
                 current.Next = this.Create(value);
-                this.IncreaseCount();
             }
+
+            this.IncreaseCount();
+
 
         }
 
@@ -56,6 +58,7 @@ namespace linkedlist
         {
             this.CheckErrorIndex(index);
             var current = this.Head;
+
             if (index == 0)
             {
                 return current.Value;
@@ -98,10 +101,11 @@ namespace linkedlist
                 }
 
                 current!.Next = current?.Next?.Next;
-
-                this.DecreaseCount();
                 
             }
+
+            this.DecreaseCount();
+
 
         }
         public void AddAtIndex(int index, T value)
@@ -124,10 +128,10 @@ namespace linkedlist
 
                 newNode.Next = nodes?.Next;
                 nodes!.Next = newNode;
-                this.IncreaseCount();
 
             }
 
+            this.IncreaseCount();
 
         }
 
@@ -143,8 +147,10 @@ namespace linkedlist
                 var current = this.Create(value);
                 current.Next = oldCurrent;
                 this.Head = current;
-                this.IncreaseCount();
             }
+
+            this.IncreaseCount();
+
         }
         public void DeleteAtBeginning()
         {
@@ -177,6 +183,10 @@ namespace linkedlist
 
         private void CheckErrorIndex(int index)
         {
+            if(this.Count == 0)
+            {
+                throw new ArgumentOutOfRangeException("index");
+            }
             if (this.Head == null && index != 0)
             {
                 throw new ArgumentOutOfRangeException("index");

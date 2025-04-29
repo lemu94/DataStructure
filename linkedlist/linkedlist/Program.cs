@@ -18,8 +18,27 @@
             test.DeleteAtBeginning();
             test.ShowList();
             Console.WriteLine(test.SearchByPosition(0));
+            Console.WriteLine(test.SearchByPosition(1));
+
             Console.WriteLine(test.getCount());
-            
+            Queue<int> Lqueue = new Queue<int>();
+            Lqueue.Enqueue(102);
+            Lqueue.Enqueue(50);
+            Lqueue.Enqueue(40);
+            Lqueue.Enqueue(60);
+            Lqueue.Enqueue(20);
+            Lqueue.Enqueue(870);
+
+            Console.WriteLine(Lqueue.GetCount());
+            Console.WriteLine(Lqueue.Peek());
+            Lqueue.Show();
+            Lqueue.Dequeue();
+            Lqueue.Dequeue();
+            Lqueue.Dequeue();
+            Console.WriteLine(Lqueue.Peek());
+
+
+
 
 
             Console.WriteLine("Hello, World!");
