@@ -9,7 +9,6 @@ namespace linkedlist
     public class Queue <T>
     {
         private LinkeList<T> list;
-        private int Count = 0;
         public Queue() { 
             this.list = new LinkeList<T>();
         }
