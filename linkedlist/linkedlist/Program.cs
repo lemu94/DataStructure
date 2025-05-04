@@ -37,6 +37,27 @@
             Lqueue.Dequeue();
             Console.WriteLine(Lqueue.Peek());
 
+           
+            Stack<int> stack = new Stack<int>();
+            stack.Push(1000);
+            stack.Push(20);
+            stack.Push(65);
+            Console.WriteLine(stack.Count);
+            Console.WriteLine(stack.Peek());
+
+            Console.WriteLine("----- Stacks");
+            Stacks<int> stack2 = new Stacks<int>();
+            stack2.Push(1000);
+            stack2.Push(20);
+            stack2.Push(65);
+            Console.WriteLine(stack2.GetCount());
+            stack2.Show();
+            stack2.Pop();
+            
+            stack2.Show();
+
+
+
 
 
 
